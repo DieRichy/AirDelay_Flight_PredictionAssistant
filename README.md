@@ -18,7 +18,7 @@ This project predicts flight delay categories using historical and real-time dat
 - User inputs flight details (airline, airports, datetime, etc.)
 - Model returns delay category and probability distribution in real-time
 
-<img width="805" alt="Screenshot 2025-04-27 at 14 40 56" src="https://github.com/user-attachments/assets/604578a2-1df3-4801-8480-99714ec6d485" />
+<img width="962" alt="Screenshot 2025-04-27 at 14 41 52" src="https://github.com/user-attachments/assets/37ea3a6c-f14a-4b73-9433-01f8b0a0efcd" />
 
 ### Part 2: Exploratory Data Analysis (EDA)
 - Delay category distribution
@@ -43,6 +43,7 @@ This project predicts flight delay categories using historical and real-time dat
 
 
 
+<img width="805" alt="Screenshot 2025-04-27 at 14 40 56" src="https://github.com/user-attachments/assets/604578a2-1df3-4801-8480-99714ec6d485" />
 
 ## 🚀 Getting Started
 
