@@ -1,4 +1,4 @@
-<img width="942" alt="Screenshot 2025-04-27 at 14 41 44" src="https://github.com/user-attachments/assets/166de73b-1d42-43e7-9632-afc5a090d520" /># ✈️ Flight Delay Prediction & LLM-Based Chatbot
+# ✈️ Flight Delay Prediction & LLM-Based Chatbot
 This project predicts flight delay categories using historical and real-time data. It also features an interactive chatbot powered by a local LLM to support natural language flight queries. The app is built with Streamlit, integrates batch and streaming pipelines via Azure, and offers explainable model outputs.
 
 ## ❗ Prerequisite
