@@ -1,0 +1,91 @@
+project/
+│
+├── models/                             # ✅ Model-related files
+│   ├── best_model.pt                   # Fine-tuned PyTorch model
+│   ├── embedding_dims.json             # Embedding dimensions for categorical features
+│   └── label_encoders.json             # LabelEncoder information
+│
+├── src/                                # ✅ Code modules (functionally separated)
+│   ├── __init__.py
+│   ├── utils.py                        # Utility functions (e.g., preprocess_date)
+│   ├── model.py                        # Core model prediction logic
+│   ├── feature_engineering_1.py        # Feature engineering (season, rush hour, etc.)
+│   ├── llm_dialogue_2.py               # Multi-turn LLM dialogue and slot extraction
+│   └── model_utils_3.py                # Model loading, prediction, and explanation functions
+│
+├── data/                               # ✅ Supporting data files
+│   ├── lookup_dicts.pkl                # Lookup dictionaries for average delay times
+│   └── airports_timezone.csv           # IATA ↔️ city ↔️ timezone mapping table
+│
+├── mapping/                            # ✅ Visualization/analysis CSVs (for EDA)
+│   ├── airline_avg_arr_delay.csv
+│   ├── airline_avg_dep_delay.csv
+│   ├── dest_avg_arr_delay.csv
+│   └── origin_avg_dep_delay.csv
+│
+├── venv/                               # 🧪 Virtual environment 
+│
+├── streamlit_app.py                    # ✅ Main entry: Streamlit web app
+├── requirements.txt                    # ✅ Dependency list
+└── README.md                           # 📘 Project documentation
+
+Detailed Folder and File Descriptions
+
+1. models/
+	•	best_model.pt: Stores the fine-tuned PyTorch model used for predicting flight delay categories.
+	•	embedding_dims.json: Records the embedding dimension configurations for categorical features, used in the model’s embedding layers.
+	•	label_encoders.json: Stores the label encoders generated during training for consistent category encoding/decoding during prediction.
+
+2. src/
+	•	__init__.py: Marks src/ as a Python package, facilitating module imports across the project.
+	•	utils.py: Contains utility functions for data preprocessing and feature creation, such as label encoder loading, feature generation, and rush hour classification.
+	•	model.py: Houses the model definition and prediction logic, including the DelayPredictor class and predict function.
+	•	feature_engineering_1.py: Handles feature engineering tasks like determining seasons, rush hours, and other derived time-based features.
+	•	llm_dialogue_2.py: Supports multi-turn dialogue with LLMs for flight information extraction and slot filling based on user inputs.
+	•	model_utils_3.py: Provides functionality for loading models, making predictions, applying encoders, and generating human-readable explanations.
+
+3. mapping/
+	•	airline_avg_arr_delay.csv: Contains average arrival delay data for each airline.
+	•	airline_avg_dep_delay.csv: Contains average departure delay data for each airline.
+	•	dest_avg_arr_delay.csv: Contains average arrival delay data per destination airport.
+	•	origin_avg_dep_delay.csv: Contains average departure delay data per origin airport.
+
+4. venv/
+	•	A Python virtual environment storing project-specific packages and dependencies to maintain isolated development environments.
+
+5. streamlit_app.py
+Main entry point for the web application, built using Streamlit, structured into three parts:
+	•	Part 1: Prediction App
+	•	Users can input airline, origin/destination airport, flight times, and delay information.
+	•	The backend uses the fine-tuned model to predict the flight delay category and shows real-time prediction results and probability distributions.
+	•	Part 2: Exploratory Data Analysis (EDA)
+	•	Provides five major visualization sections:
+	•	Delay Category Distribution: Definition and distribution of delay categories (bar chart + table)
+	•	Numerical Features Summary: Summary statistics and histograms for features like DepDelay, ArrDelay, and ActualElapsedTime
+	•	Average Arrival Delay by Airline: Bar chart of average arrival delays by airline, sorted by delay
+	•	Top Airports by Delay: Top 10 airports with the worst departure/arrival delays
+	•	Time-related Delay Trends: Delay patterns based on Rush Hour, Season, Weekend, and Start/End of Month.
+	•	Part 3: LLM-based Flight Assistant
+	•	Users describe their flights naturally (e.g., “I’m flying Delta Airlines from Los Angeles to Boston at 8:15 AM.”)
+	•	The system uses a large language model to extract structured information like origin, destination, and flight time.
+	•	Predictions are made using the extracted features, and the LLM provides readable explanations.
+	•	Supports multi-turn conversations if user input is incomplete, prompting for additional information.
+
+6. requirements.txt
+	•	Lists all project dependencies with specific versions, enabling environment setup via pip install -r requirements.txt.
+
+⸻
+
+Additional Module Highlights (for LLM Assistant)
+	•	data/airports_timezone.csv
+	•	Contains mappings between airport names, cities, IATA codes, and time zones.
+	•	Used in the LLM Assistant module to standardize input and handle time zone conversions when standard IATA inputs are missing.
+	•	src/feature_engineering_1.py
+	•	Contains functions to construct model input features such as season, rush hour classification, and holiday indicators.
+	•	Ensures that features generated from user natural language inputs match those used during model training.
+	•	src/llm_dialogue_2.py
+	•	A multi-turn dialogue extraction module based on large language models (e.g., HuggingFace-hosted Mistral).
+	•	Enables continuous interactive field filling on the Streamlit page for incomplete user inputs.
+	•	src/model_utils_3.py
+	•	Integrates model loading, prediction, and output explanation.
+	•	Supports generating prediction probabilities and producing user-friendly interpretation using an LLM.
